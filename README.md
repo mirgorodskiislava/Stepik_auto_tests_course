@@ -1,3 +1,3 @@
-# Stepik_auto_tests_course
+﻿# Stepik_auto_tests_course
 Изучение Selenium+Java(/Python)
-Test
+В данном репозитории расположены примеры изучения автоматизации тестирования
