@@ -1,0 +1,30 @@
+﻿import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class Main {
+    public static void main (String[] args) throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver","Указать свой путь к драйверу!!!");
+        WebDriver driver = new ChromeDriver();
+        try {
+
+            driver.get( "http://suninjuly.github.io/registration2.html" ); // веб-сервис, который тестируем
+            WebElement input1=driver.findElement( By.xpath( "//input[@placeholder='Input your first name']" ) );
+            input1.sendKeys( "Stanislav" );
+            WebElement input2=driver.findElement( By.xpath( "//input[@placeholder='Input your last name']" ) );
+            input2.sendKeys( "Mirgorodskiy" );
+            WebElement input3=driver.findElement( By.xpath( "//input[@placeholder='Input your email']" ) );
+            input3.sendKeys( "mirgorodskii_sta@mail.ru" );
+            WebElement button=driver.findElement( By.xpath( "//button[text()='Submit']" ) );
+            button.click();
+            Thread.sleep( 1000 );
+            WebElement welcome_text_elt = driver.findElement( By.tagName( "h1" ) );
+            String welcome_text=welcome_text_elt.getText();
+            org.testng.Assert.assertEquals( welcome_text, "Congratulations! You have successfully registered!" );
+        }
+        finally {
+            Thread.sleep( 5000 );
+            //driver.quit(); не закрываю, т.к пока так удобнее тренироваться
+        }
+    }
+}
